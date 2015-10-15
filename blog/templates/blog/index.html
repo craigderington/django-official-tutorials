@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2 style="margin-bottom:10px;"><i class="fa fa-university"></i> Craig's Django Blog
+        <span class="pull-right"><a href="{% url 'blog:post_new' %}" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> Add Post</a></span>
+      </h2>
+      {% for post in posts %}
+      <div>
+        <p><span class="muted pull-right"><small>{{ post.pub_date }}</small></span></p>
+        <p><h3><a href="{% url 'blog:post_detail' pk=post.pk %}">{{ post.title }}</a></h3></p>
+        <p>{{ post.blog_text|linebreaks }}</p>
+        <br />
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

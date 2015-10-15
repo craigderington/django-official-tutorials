@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2 style="margin-bottom:10px;"><i class="fa fa-university"></i> Craig's Django Blog</h2>      
+      {% if post.pub_date and not post.is_draft %}
+      <div>
+        <p><span class="muted pull-right"><small>{{ post.pub_date }}</small></span></p>
+        <p><h3>{{ post.title }}</h3></p>
+        <p>{{ post.blog_text|linebreaks }}</p>
+        <br />
+      </div>
+      {% endif %}   
+    </div>
+    <div>
+      <span class="pull-right">
+        <a href="{% url 'blog:index' %}" class="btn btn-sm btn-default"><i class="fa fa-arrow-circle-left"></i> Return to List</a>
+        <a href="{% url 'blog:post_edit' pk=post.pk %}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Edit Post</a>
+      </span>
+    </div>
+  </div>
+
+
+
+
+{% endblock %}
